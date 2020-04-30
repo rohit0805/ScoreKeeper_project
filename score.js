@@ -14,6 +14,7 @@ btn1.addEventListener("click",function(){
         count1++;
         first.textContent=count1;
         if(count1===winning){
+            first.classList.add("winner");
             gameover=true;
         }
     }   
@@ -25,6 +26,7 @@ btn2.addEventListener("click",function(){
         count2++;
         second.textContent=count2;
         if(count2===winning){
+            second.classList.add("winner");
             gameover=true;
         }    
     }
@@ -34,5 +36,7 @@ btn2.addEventListener("click",function(){
 reset.addEventListener("click",function(){
     count1=count2=0;
     gameover=false;
+    first.classList.remove("winner");
+    second.classList.remove("winner");
     first.textContent=second.textContent=0;
 });
