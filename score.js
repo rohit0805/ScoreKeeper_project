@@ -1,7 +1,7 @@
 var first=document.querySelector(".first");
 var second=document.querySelector(".second");
 var total=document.querySelector(".total");
-var input=document.getElementsByTagName("input");
+var input=document.getElementsByTagName("input")[0];
 
 var btn1=document.querySelector(".btn1");
 var btn2=document.querySelector(".btn2");
@@ -17,6 +17,12 @@ btn1.addEventListener("click",function(){
             first.classList.add("winner");
             gameover=true;
         }
+        //just for bug handling
+        if(winning<count1){
+            winning=count1+count2+10;
+            total.textContent=winning;
+            input.value=winning;
+        }
     }   
 });
 
@@ -28,6 +34,12 @@ btn2.addEventListener("click",function(){
         if(count2===winning){
             second.classList.add("winner");
             gameover=true;
+        }
+        //just for bug handling
+        if(winning<count2){
+            winning=count2+count1+10;
+            total.textContent=winning;
+            input.value=winning;
         }    
     }
 });
@@ -39,4 +51,9 @@ reset.addEventListener("click",function(){
     first.classList.remove("winner");
     second.classList.remove("winner");
     first.textContent=second.textContent=0;
+});
+
+input.addEventListener("change",function(){
+    winning=Number(input.value);
+    total.textContent=input.value ;
 });
